@@ -1,16 +1,14 @@
-import CarruselInicio from './componentes/CarruselInicio'
-import PanelInicio from './componentes/PanelInicio'
+  import CarruselInicio from './componentes/CarruselInicio'
+  import PanelInicio from './componentes/PanelInicio'
 
-function App() {
+  function App() {
 
-  return (
-    <section>
-     <div>
-      <CarruselInicio/>
-     </div>
-    </section>
-  
-  )
-}
+    return (
+      <section >
+        <PanelInicio/>
+      </section>
+    
+    )
+  }
 
-export default App
+  export default App
