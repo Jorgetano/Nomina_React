@@ -1,11 +1,11 @@
 
 .login-block{
-  background: #DE6262;  
-background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  
-background: linear-gradient(to bottom, #FFB88C, #DE6262); 
+  background: #0aa6ee;  
+background: -webkit-linear-gradient(to bottom, #0aa6ee, #0aa6ee);  
+background: linear-gradient(to bottom, #ffffff, #0aa6ee); 
 float:left;
 width:100%;
-padding : 1%;
+padding : 7%;
 }
 .container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
 .carousel-caption{text-align:left; left:5%;}
@@ -26,7 +26,33 @@ text-align: left;
 .Bienvenido {
   font-family: "Rubik Scribble", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  color: black;
-  
+  color: #0aa6ee;
 }
 
+.registro-usuarios {
+  margin-top: 20px;
+    flex: 1;
+    max-width: 150px;
+  text-align: left;
+  }
+  
+
+
+.registro-usuarios input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.registro-usuarios button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.registro-usuarios button:hover {
+  background-color: #0056b3;
+}
