@@ -14,8 +14,8 @@ function PanelInicio() {
                         style={{ width: '300px' }} alt="logo" />
                       <h4 className="Bienvenido">BIENVENIDO </h4>
                     </div>
-                    <form>
-                      <p className='mb-5 text-center'>Por Favor Ingrese Sus Datos</p>
+                    <form id='TextCss'>
+                      <p className='mb-5 text-center' >Por Favor Ingrese Sus Datos</p>
                       <div className="form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example11">Usuario</label>
                         <input type="email" id="form2Example11" className="form-control"
@@ -25,8 +25,8 @@ function PanelInicio() {
                       <div className="form-outline mb-4">
                         <input type="password" id="form2Example22" placeholder='*************' className="form-control" />
                       </div>
-                      <div className="text-center pt-1 row">
-                        <button className="btn btn-primary  fa-lg gradient-custom-2 mb-3 " type="button">Ingresar</button>
+                      <div className="text-center pt-1 row BIngresar ">
+                        <button className="btn btn-primary" type="button">Ingresar</button>
                       </div>
                       <div className='d-flex' >
                         <input className="form-check-input ms-3 " type="checkbox" value="" id="flexCheckDefault" />
