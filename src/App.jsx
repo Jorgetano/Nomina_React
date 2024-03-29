@@ -1,4 +1,5 @@
   import PanelInicio from './componentes/PanelInicio'
+import RegistroUsuarios from './componentes/RegistroUsuarios'
   function App() {
 
     return (
