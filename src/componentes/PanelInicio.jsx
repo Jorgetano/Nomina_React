@@ -4,9 +4,11 @@ import CarruselInicio from './CarruselInicio';
 
 function PanelInicio() {
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
+  const [mostrarCarrusel, setMostrarCarrusel] = useState(true);
 
   const handleClickRegistro = () => {
     setMostrarRegistro(true);
+    setMostrarCarrusel(false); // Oculta el carrusel al hacer clic en "¡Registrate Aqui!"
   };
 
   return (
@@ -49,7 +51,7 @@ function PanelInicio() {
                 </div>
               </div>
               {mostrarRegistro && <RegistroUsuarios />} 
-              <CarruselInicio />
+              {mostrarCarrusel && <CarruselInicio />} {/* Agregamos esta condición para mostrar el carrusel */}
             </div>
           </div>
         </div>
