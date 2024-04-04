@@ -6,7 +6,7 @@ function PanelInicio() {
       <div className="container">
           <div className="col-xl-10 w-100 h-100">
             <div className="card rounded-3 text-black">
-              <div className="row g-0">
+              <div className="container2 row g-0">
                 <div className="col-lg-6">
                   <div className="card-body p-md-5 mx-md-4">
                     <div className="text-center ">
