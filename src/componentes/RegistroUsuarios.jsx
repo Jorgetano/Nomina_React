@@ -15,7 +15,7 @@ function RegistroUsuarios() {
                     <h4 className="Bienvenido">REGISTRATE </h4>
                   </div>
                   <form id='TextCss'>
-                    <p className='mb-5 text-center' >Por Favor Ingrese Sus Datos</p>
+                    <p className='mb-4 text-center' >Por Favor Ingrese Sus Datos</p>
 
                     <div className="form-outline mb-4 d-flex justify-content-between">
                       <div>
@@ -46,7 +46,7 @@ function RegistroUsuarios() {
                       <input type="password" id="form2Example22" placeholder='*************' className="form-control" />
                     </div>
                     <div className="text-center pt-1 row BIngresar ">
-                      <button className="btn btn-primary" type="button">Ingresar</button>
+                      <button className="btn btn-primary" type="button">Registrarse</button>
                     </div>
                   </form>
                 </div>
