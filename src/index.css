@@ -37,10 +37,11 @@ border-radius:  0px 9px 9px 0px ;
   color: black;
   
 }
-#TextCss{
+.TextCss{
   font-family: "Imbue", Arial, Helvetica, sans-serif;
   font-weight: 600;
   color: black;
+  
 }
 
 .BIngresar button{
@@ -51,5 +52,8 @@ border-radius:  0px 9px 9px 0px ;
   font-weight: 700;
   height: 55px;
 }
+
+
+
 
 
