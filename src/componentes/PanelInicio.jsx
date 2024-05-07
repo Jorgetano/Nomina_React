@@ -1,16 +1,8 @@
 import { useState, useEffect } from 'react';
 import CarruselInicio from './CarruselInicio';
 import RegistroUsuarios from './RegistroUsuarios';
-import { collection, documentId } from 'firebase/firestore';
-import { connDatabase } from './config/firebaseConfig';
 
-async function getUsuarios(){
-  let collectionsUsuarios = collection(connDatabase, 'usuarios')
-  let resultado = await getDos(collectionsUsuarios)
-  console.log(resultado)
-}
 
-getUsuarios()
 
 function PanelInicio() {
 
