@@ -1,50 +1,47 @@
-
-
-.login-block, :root{
+.login-block, :root {
   background: #eac4f6;  
-background: -webkit-linear-gradient(to bottom, #fd6aba, #fd6aba);  
-background: linear-gradient(to bottom, #fd6aba, #DE6262); 
-float:left;
-width:100%;
-height: 100%;
-padding-top: 10px;
+  background-color: #EE2B7B;
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
 }
-.container2{background:#fff; border-radius: 15px; box-shadow:20px 20px 0px rgba(0,0,0,0.1); }
-.carousel-caption{ text-align:left; left:5%;}
-
+.container2 {
+  background: #fff; 
+  border-radius: 15px; 
+  box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.1); 
+}
+.carousel-caption {
+  text-align: left; 
+  left: 5%;
+}
 .Carrusel {
   display: flex;
   flex: 1;
-text-align: left;
-
+  text-align: left;
 }
-
 .carousel-inner {
   display: flex;
   max-width: 100%;
   height: 100%;
-text-align: left;
-border-radius:  0px 9px 9px 0px ;
+  text-align: left;
+  border-radius: 0px 9px 9px 0px;
 }
 .carousel-inner div {
   max-width: 100%;
   height: 100%;
 }
-
 .Bienvenido {
   font-family: "Rubik Scribble", Arial, Helvetica, sans-serif;
   font-weight: 600;
   color: black;
-  
 }
-.TextCss{
+.TextCss {
   font-family: "Imbue", Arial, Helvetica, sans-serif;
   font-weight: 600;
   color: black;
-  
 }
-
-.BIngresar button{
+.BIngresar button {
   background-color: #EE2B7B;
   margin-bottom: 30px;
   border: none;
@@ -52,8 +49,77 @@ border-radius:  0px 9px 9px 0px ;
   font-weight: 700;
   height: 55px;
 }
-
-
-
-
-
+.container {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  height: 100vh;
+  background: #eac4f6;  
+  background-color: #EE2B7B;
+}
+.content {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px;
+  z-index: 1; /* Asegura que el contenido esté encima de la imagen */
+  overflow: hidden; /* Para asegurarse de que los elementos hijos no sobresalgan */
+}
+.content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./componentes/Imagen/Cesde.jpeg');
+  background-size: cover; /* Opciones: cover, contain, auto, o especificar dimensiones (e.g., 100% 100%) */
+  background-repeat: no-repeat; /* Asegura que la imagen no se repita */
+  background-position: center; /* Asegura que la imagen esté centrada */
+  opacity: 0.3; /* Ajusta este valor para controlar la transparencia */
+  z-index: -1; /* Asegura que la imagen esté detrás del contenido */
+  background-size: 85% 85%;
+}
+h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+div {
+  margin-bottom: 10px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1; /* Asegura que los inputs y botones estén encima de la imagen */
+  position: relative;
+}
+button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #cf40b2;
+}
+h2 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+  z-index: 1; /* Asegura que el resultado esté encima de la imagen */
+  position: relative;
+}

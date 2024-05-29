@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import CarruselInicio from './CarruselInicio';
 import RegistroUsuarios from './RegistroUsuarios';
+import CalculadoraLiquidacion from './CalculadoraLiquidacion';
 
 
 
@@ -94,6 +95,9 @@ function PanelInicio() {
                 </div>
               </div>
               <CarruselInicio />
+            </div>
+            <div>
+              <CalculadoraLiquidacion/>
             </div>
           </div>
         </div>
