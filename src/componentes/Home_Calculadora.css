@@ -1,0 +1,68 @@
+.card1 {
+  justify-content: center;
+  text-align: center;
+  width: 100vh;
+  position: sticky;
+  top: 0;
+  background: white;
+  box-shadow: 0 -0.5rem 1rem rgba(0 0 0 / 0.15);
+  border-radius: 20px;
+  margin: 5vh auto 20vh  auto ; /* Centrar horizontalmente */
+}
+
+table{
+  border:1px solid black;
+  width: 100%;
+}
+tr{
+  border: 1px solid black;
+  
+}
+
+td{
+  width: 50%;
+  border: 1px solid black;
+}
+
+.Resumen h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200; /* Puedes cambiarlo a 400 si prefieres un estilo más ligero */
+  color: #3221b1; /* Cambia esto al color que prefieras */
+  margin-top: 20px; /* Espacio inferior */
+  font-size: large;
+}
+
+.Resumen h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200; /* Puedes cambiarlo a 400 si prefieres un estilo más ligero */
+  color: #e34343; /* Cambia esto al color que prefieras */
+  margin-top: 30px; /* Espacio inferior */
+  font-size: large;
+}
+
+body{
+  background:
+    linear-gradient(
+      rgba(220, 234, 237, .7),
+      rgba(220, 234, 237, .7)
+    ),
+    url(http://res.cloudinary.com/jenelle-miller/image/upload/v1518619522/doodles_cuau2z.png) repeat;
+}
+
+.flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.flotante:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}

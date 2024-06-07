@@ -1,10 +1,8 @@
 import { useState } from 'react'
-import PanelInicio from './componentes/PanelInicio'
-import RegistroUsuarios from './componentes/RegistroUsuarios'
 //Importaciones de Firebase
 import appFirebase from '../src/credenciales'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-
+import Home from './componentes/Home'
 //Constante Para autenticar desde App Firebase
 const auth = getAuth(appFirebase)
 
@@ -22,8 +20,7 @@ function App() {
 
   return (
     <section>
-      <PanelInicio/>
-      {/* {usuario ? <CarruselInicio/> : <PanelInicio/>} */}
+      <Home/>
     </section>
 
   )

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../credenciales';
+import Swal from 'sweetalert2';
 import CarruselInicio from './CarruselInicio';
-import { auth } from '../credenciales'; // Importa `auth` desde tus credenciales
+import './Home_Calculadora.css';
+
 
 function RegistroUsuarios() {
-  const redirecion = useNavigate();
+  const redireccion = useNavigate();
   const [nombres, setNombres] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [correo, setCorreo] = useState("");
@@ -13,18 +16,42 @@ function RegistroUsuarios() {
   const [comContrasena, setComContrasena] = useState("");
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const registrar = async (e) => {
     e.preventDefault();
     if (contrasena !== comContrasena) {
-      setError("Las contraseñas no coinciden");
+      Swal.fire({
+        title: 'Error',
+        text: 'Las Contraseña Ingresada No Coincide',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       return;
     }
-    
+
     try {
       await createUserWithEmailAndPassword(auth, correo, contrasena);
-      redirecion("/Home");
+      Swal.fire({
+        title: "Bienvenido",
+        text: "Será redireccionado al panel principal",
+        icon: "success",
+      });
+      redireccion("/Home2");
     } catch (error) {
-      setError(error.message);
+      if (error.code === 'auth/email-already-in-use') {
+        Swal.fire({
+          title: 'Error',
+          text: 'El correo electrónico ya está registrado. Por favor, inicie sesión.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: error.message,
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
     }
   };
 
@@ -48,6 +75,14 @@ function RegistroUsuarios() {
     setComContrasena(e.target.value);
   };
 
+  const Iniciarsesion = () => {
+    redireccion("/Login");
+  };
+
+  const regresarMenu = () => {
+    redireccion("/");
+  };
+
   return (
     <section className="login-block">
       <div className="container" id="Registrarse">
@@ -57,11 +92,12 @@ function RegistroUsuarios() {
               <div className="col-lg-6">
                 <div className="card-body p-md-1 mx-md-4">
                   <div className="text-center">
+                  <button1 className=" flotante  btn btn-secondary " onClick={regresarMenu} type="button">Regresar al Menú</button1>
                     <img className='' src="https://www.cesde.edu.co/wp-content/uploads/2023/02/logo-Cesde-2023.svg"
                       style={{ width: '300px' }} alt="logo" />
-                    <h4 className="Bienvenido">REGISTRATE </h4>
+                    <h4 className="Bienvenido">REGÍSTRATE</h4>
                   </div>
-                  <form className='TextCss' onSubmit={handleSubmit}>
+                  <form className='TextCss' >
                     <p className='mb-4 text-center'>Por Favor Ingrese Sus Datos</p>
 
                     <div className="form-outline mb-4 d-flex justify-content-between">
@@ -82,22 +118,22 @@ function RegistroUsuarios() {
                       <input type="email" id="form2Example13" className="form-control"
                         value={correo} onChange={handleChangeCorreo} placeholder="Ingrese Su Correo" required />
                     </div>
-                    
+
                     <div className="form-outline mb-4">
                       <label className="form-label" htmlFor="form2Example22">Contraseña *</label>
                       <input type="password" id="form2Example22" className="form-control"
                         value={contrasena} onChange={handleChangeContrasena} placeholder="*************" required />
                     </div>
-                    
+
                     <div className="form-outline mb-4">
                       <label className="form-label" htmlFor="form2Example23">Confirmar contraseña *</label>
                       <input type="password" id="form2Example23" className="form-control"
                         value={comContrasena} onChange={handleChangeComContrasena} placeholder="*************" required />
                     </div>
-                    
+
                     <div className="text-center row BIngresar">
-                      <button className="btn btn-primary" type="submit">Registrarse</button>
-                      <button className="btn btn-primary" type="button">Iniciar Sesión</button>
+                      <button onClick={registrar} className="btn btn-primary" type="submit">Registrarse</button>
+                      <button className="btn btn-primary" onClick={Iniciarsesion} type="button">Iniciar Sesión</button>
                     </div>
                   </form>
                   {error && <p className="text-danger mt-3">{error}</p>}

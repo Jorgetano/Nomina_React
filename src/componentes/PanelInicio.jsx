@@ -19,7 +19,7 @@ function PanelInicio() {
       // Inicia sesión con el correo electrónico y la contraseña proporcionados
       await signInWithEmailAndPassword(auth, usuario, contraseña);
       console.log("Inicio de sesión exitoso");
-      navigate("/HomeCalculadora"); // Redirige al usuario a la página de inicio
+      navigate("/Home2"); // Redirige al usuario a la página de inicio
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
       alert("Error al iniciar sesión. Verifica tus credenciales.");
@@ -30,7 +30,9 @@ function PanelInicio() {
     setRegistrarse(true);
     navigate("/Registro");
   };
-
+  const regresarMenu2 = () => {
+    navigate("/");
+  };
   return (
     <section className="login-block">
       <div className="container" id="Login">
@@ -40,6 +42,7 @@ function PanelInicio() {
               <div className="col-lg-6">
                 <div className="card-body p-md-5 mx-md-4">
                   <div className="text-center">
+                  <button1 className=" flotante  btn btn-secondary " onClick={regresarMenu2} type="button">Regresar al Menú</button1>
                     <img src="https://www.cesde.edu.co/wp-content/uploads/2023/02/logo-Cesde-2023.svg"
                       style={{ width: '250px' }} alt="logo" />
                     <h4 className="Bienvenido">BIENVENIDO</h4>
