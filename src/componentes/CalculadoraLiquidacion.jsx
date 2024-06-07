@@ -24,11 +24,11 @@ const CalculadoraLiquidacion = () => {
             <div className="content">
                 <h1>Calculadora de Liquidación</h1>
                 <div>
-                    <label>Ingrese la fecha de inicio del periodo a liquidar (YYYY-MM-DD):</label>
+                    <label>Ingrese la fecha de inicio del periodo a liquidar (DD-MM-YYYY):</label>
                     <input type="date" value={fechaInicio} onChange={(e) => setFechaInicio(e.target.value)} />
                 </div>
                 <div>
-                    <label>Ingrese la fecha de final del periodo a liquidar (YYYY-MM-DD):</label>
+                    <label>Ingrese la fecha de final del periodo a liquidar (DD-MM-YYYYY):</label>
                     <input type="date" value={fechaFinal} onChange={(e) => setFechaFinal(e.target.value)} />
                 </div>
                 <div>
