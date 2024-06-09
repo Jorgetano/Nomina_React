@@ -10,7 +10,6 @@ const CalculadoraLiquidacion = () => {
     const [porcentajeRiesgo, setPorcentajeRiesgo] = useState(0);
     const [liquidacion, setLiquidacion] = useState(null);
     const SALARIO_MINIMO = 1300000;
-    const AUXILIO_TRASPORTE = 162000;
 
     useEffect(() => {
         const futureDate = DateTime.now().toISODate();
@@ -34,7 +33,7 @@ const CalculadoraLiquidacion = () => {
         const auxilioTransporte = tieneAuxilioTransporte ? 162000 : 0; // Lógica de auxilio de transporte
 
         // Calculo de prestaciones sociales
-        const salarioTotal = 1462000;
+        const salarioTotal = salarioMensualNumber + auxilioTransporte;
         const cesantias = (salarioTotal * diasLaborados) / 360; // 8.33% del salario mensual
         const interesesCesantias = (cesantias * 0.12 * diasLaborados) / 360; // 12% de las cesantías
         const primaServicios = (salarioMensualNumber * diasLaborados) / 360; // 8.33% del salario mensual
