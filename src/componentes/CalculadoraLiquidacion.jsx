@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DateTime } from 'luxon';
 import './Home_Calculadora.css';
 
@@ -9,30 +9,52 @@ const CalculadoraLiquidacion = () => {
     const [tieneAuxilioTransporte, setTieneAuxilioTransporte] = useState(false);
     const [porcentajeRiesgo, setPorcentajeRiesgo] = useState(0);
     const [liquidacion, setLiquidacion] = useState(null);
+    const SALARIO_MINIMO = 1300000;
+    const AUXILIO_TRASPORTE = 162000;
+
+    useEffect(() => {
+        const futureDate = DateTime.now().toISODate();
+        const today = DateTime.now().startOf('year').toISODate(); // 1 de enero del año actual
+        setFechaInicio(today);
+        setFechaFinal(futureDate);
+        setSalarioMensual(SALARIO_MINIMO.toString());
+        
+    }, []);
 
     const calcularLiquidacion = () => {
+        if (!fechaInicio || !fechaFinal || !salarioMensual) {
+            alert("Por favor complete todos los campos.");
+            return;
+        }
+
         const fechaInicioObj = DateTime.fromISO(fechaInicio);
         const fechaFinalObj = DateTime.fromISO(fechaFinal);
-        const diasLaborados = fechaFinalObj.diff(fechaInicioObj, 'days').days + 1;
-        const salarioProporcional = (parseFloat(salarioMensual) / fechaInicioObj.daysInMonth) * diasLaborados;
-        const auxilioTransporte = tieneAuxilioTransporte ? 100000 : 0; // Lógica de auxilio de transporte
-        const liquidacionCalculada = salarioProporcional + auxilioTransporte + (salarioProporcional * porcentajeRiesgo);
+        const diasLaborados = fechaFinalObj.diff(fechaInicioObj, 'days').days -1;
+        const salarioMensualNumber = parseFloat(salarioMensual);
+        const auxilioTransporte = tieneAuxilioTransporte ? 162000 : 0; // Lógica de auxilio de transporte
 
         // Calculo de prestaciones sociales
-        const cesantias = salarioProporcional * 0.0833; // 8.33% del salario proporcional
-        const interesesCesantias = cesantias * 0.12; // 12% de las cesantías
-        const primaServicios = salarioProporcional * 0.0833; // 8.33% del salario proporcional
-        const vacaciones = salarioProporcional * 0.0417; // 4.17% del salario proporcional
+        const salarioTotal = 1462000;
+        const cesantias = (salarioTotal * diasLaborados) / 360; // 8.33% del salario mensual
+        const interesesCesantias = (cesantias * 0.12 * diasLaborados) / 360; // 12% de las cesantías
+        const primaServicios = (salarioMensualNumber * diasLaborados) / 360; // 8.33% del salario mensual
+        const vacaciones = salarioMensualNumber * diasLaborados / 720; // 4.17% del salario mensual
         const totalPrestacionesSociales = cesantias + interesesCesantias + primaServicios + vacaciones;
 
         // Calculo de aportes a la seguridad social
-        const pensiones = salarioProporcional * 0.04; // 4% del salario proporcional
-        const salud = salarioProporcional * 0.04; // 4% del salario proporcional
+        const pensiones = salarioMensualNumber * 0.04; // 4% del salario mensual
+        const salud = salarioMensualNumber * 0.04; // 4% del salario mensual
         const totalSeguridadSocial = pensiones + salud;
 
+        const liquidacionCalculada = cesantias + interesesCesantias + primaServicios + vacaciones
+
         setLiquidacion({
-            salarioProporcional: salarioProporcional.toFixed(2),
+            salarioMensual: salarioMensualNumber.toFixed(2),
             auxilioTransporte: auxilioTransporte.toFixed(2),
+            cesantias: cesantias.toFixed(2),
+            interesesCesantias: interesesCesantias.toFixed(2),
+            primaServicios: primaServicios.toFixed(2),
+            vacaciones: vacaciones.toFixed(2),
             totalPrestacionesSociales: totalPrestacionesSociales.toFixed(2),
             totalSeguridadSocial: totalSeguridadSocial.toFixed(2),
             liquidacionTotal: liquidacionCalculada.toFixed(2),
@@ -40,16 +62,19 @@ const CalculadoraLiquidacion = () => {
         });
     };
 
+    const formatNumber = (num) => {
+        return new Intl.NumberFormat('es-ES').format(num);
+    };
 
     return (
         <div className="card mb-4">
             <div className="card-header d-flex justify-content-between align-items-center">
                 <h3 className=''>Mi Calculadora</h3>
-                <img src="src\assets\iconos-calculadora.png" alt="Icono Calculadora" width="50" height="50" className="me-3" />
+                <img src="src/assets/iconos-calculadora.png" alt="Icono Calculadora" width="50" height="50" className="me-3" />
             </div>
             <div className="card-body">
                 <div className="d-flex align-items-center mb-3">
-                    <p>Acontinuacion se presentara la Calculadora Laboral. Una herramienta pedagógica de fácil uso, con la que todos los trabajadores y empleadores de Colombia podrán:</p>
+                    <p>A continuación se presentará la Calculadora Laboral. Una herramienta pedagógica de fácil uso, con la que todos los trabajadores y empleadores de Colombia podrán:</p>
                 </div>
                 <ul>
                     <li>Generar estimativos de liquidación de prestaciones sociales</li>
@@ -80,7 +105,7 @@ const CalculadoraLiquidacion = () => {
                 </ul>
                 <p>Esta calculadora sólo aplica para simular liquidaciones en los eventos en los que el contrato de trabajo termina con justa causa o por cualquiera de las causas legales que NO dan origen a indemnizaciones de ninguna índole.</p>
                 <p>Recuerde: cuando exista conflicto respecto de los derechos del trabajador, deberá acudir a la justicia laboral ordinaria.</p>
-                <a href="src\assets\Mi-Calculadora-2018.pdf" download="Mi-Calculadora-2018.pdf" className="btn btn-primary">Descargue Manual de Usuario para "Mi Calculadora"</a>
+                <a href="src/assets/Mi-Calculadora-2018.pdf" download="Mi-Calculadora-2018.pdf" className="btn btn-primary">Descargue Manual de Usuario para "Mi Calculadora"</a>
             </div>
             <div className='card1 card-header align-items-center'>
                 <h1 className='pt-4'>Calculadora de Liquidación</h1>
@@ -102,7 +127,7 @@ const CalculadoraLiquidacion = () => {
                 </div>
                 <div className="mb-3">
                     <label>Seleccione la clase de riesgos laborales correspondiente al sector de actividad y al cargo del trabajador:</label>
-                    <select className="form-select" onChange={(e) => setPorcentajeRiesgo(parseFloat(e.target.value))}>
+                    <select className="form-select" value={porcentajeRiesgo} onChange={(e) => setPorcentajeRiesgo(parseFloat(e.target.value))}>
                         <option value={0.005}>Riesgo I</option>
                         <option value={0.01}>Riesgo II</option>
                         <option value={0.02}>Riesgo III</option>
@@ -117,7 +142,9 @@ const CalculadoraLiquidacion = () => {
                             <tbody>
                                 <tr>
                                     <td>Periodo (DD-MM-AAAA)</td>
-                                    <td>{fechaInicio && new Date(fechaInicio).toLocaleDateString('es-ES')} al {fechaFinal && new Date(fechaFinal).toLocaleDateString('es-ES')}</td>
+                                    <td>
+                                        {fechaInicio && DateTime.fromISO(fechaInicio).toFormat('dd-MM-yyyy')} al {fechaFinal && DateTime.fromISO(fechaFinal).toFormat('dd-MM-yyyy')}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Días Laborados</td>
@@ -125,11 +152,11 @@ const CalculadoraLiquidacion = () => {
                                 </tr>
                                 <tr>
                                     <td>Salario Proporcional</td>
-                                    <td>${liquidacion.salarioProporcional}</td>
+                                    <td>${formatNumber(liquidacion.salarioMensual)}</td>
                                 </tr>
                                 <tr>
                                     <td>Transporte</td>
-                                    <td>${liquidacion.auxilioTransporte}</td>
+                                    <td>${formatNumber(liquidacion.auxilioTransporte)}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -138,23 +165,19 @@ const CalculadoraLiquidacion = () => {
                             <tbody>
                                 <tr>
                                     <td>Cesantías</td>
-                                    <td>${liquidacion.cesantias}</td>
+                                    <td>${formatNumber(liquidacion.cesantias)}</td>
                                 </tr>
                                 <tr>
                                     <td>Intereses sobre cesantías</td>
-                                    <td>${liquidacion.interesesCesantias}</td>
+                                    <td>${formatNumber(liquidacion.interesesCesantias)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Prima primer semestre</td>
-                                    <td>${liquidacion.primaServicios}</td>
-                                </tr>
-                                <tr>
-                                    <td>Prima segundo semestre</td>
-                                    <td>${liquidacion.primaServicios}</td>
+                                    <td>Prima de Servicios</td>
+                                    <td>${formatNumber(liquidacion.primaServicios)}</td>
                                 </tr>
                                 <tr>
                                     <td>Vacaciones</td>
-                                    <td>${liquidacion.vacaciones}</td>
+                                    <td>${formatNumber(liquidacion.vacaciones)}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -162,21 +185,21 @@ const CalculadoraLiquidacion = () => {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Pensiones (AFP)	</td>
-                                    <td>-${liquidacion.totalPrestacionesSociales}</td>
+                                    <td>Pensiones (AFP)</td>
+                                    <td>-${formatNumber(liquidacion.totalSeguridadSocial * 0.5)}</td>
                                 </tr>
                                 <tr>
-                                    <td>Pensiones (AFP)	</td>
-                                    <td>-${liquidacion.totalPrestacionesSociales}</td>
+                                    <td>Salud</td>
+                                    <td>-${formatNumber(liquidacion.totalSeguridadSocial * 0.5)}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <h2>Liquidación Total: ${liquidacion.liquidacionTotal}</h2>
+                        <h2>Liquidación Total: ${formatNumber(liquidacion.liquidacionTotal)}</h2>
                     </div>
                 )}
-
             </div>
         </div>
     );
 };
+
 export default CalculadoraLiquidacion;
