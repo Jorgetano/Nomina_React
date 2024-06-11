@@ -2,8 +2,9 @@ import React from 'react';
 import './Home_Calculadora.css';
 import { useNavigate } from 'react-router-dom';
 import CalculadoraLiquidacion from './CalculadoraLiquidacion';
+import CalculadoraFinnal from './CalculadoraFinnal';
 
-function Home() {
+function Home2() {
     const redireccion = useNavigate();
 
     const Inicio = () => {
@@ -16,10 +17,10 @@ function Home() {
     return (
         <div>
             <div className="container">
-                <p>Home 2 pagina del encargado de nomina</p>
+                <CalculadoraFinnal/>
             </div>
         </div>
     );
 }
 
-export default Home;
+export default Home2;

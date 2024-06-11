@@ -1,0 +1,83 @@
+.calculadora-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .calculadora-titulo {
+    text-align: center;
+    background-color: #FD3F92;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .calculadora-boton {
+    display: block;
+    width: 100%;
+    background-color: #FD3F92;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .calculadora-boton:hover {
+    background-color: #FD3F92;
+  }
+  
+  .calculadora-formulario {
+    margin-bottom: 20px;
+  }
+  
+  .calculadora-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .calculadora-input {
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .resultados-datos-liquidacion, .resultados-prestaciones-sociales {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .resultados-titulo {
+    text-align: center;
+    color: #4a4a4a;
+  }
+  
+  .resultados-fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .resultados-fila:last-child {
+    border-bottom: none;
+  }
+  
+  .resultados-columna {
+    width: 50%;
+  }
+  
+  .resultados-columna:first-child {
+    font-weight: bold;
+  }
+  
+  .total-liquidacion .resultados-columna:first-child {
+    color: #FD3F92;
+  }
+  
